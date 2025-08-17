@@ -1181,7 +1181,7 @@ next:;
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.SkipLocalsInitAttribute))
             {
-                CSharpAttributeData.DecodeSkipLocalsInitAttribute<TypeWellKnownAttributeData>(DeclaringCompilation, ref arguments);
+                CSharpAttributeData.DecodeSkipLocalsInitAttribute<TypeWellKnownAttributeData>(ref arguments);
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.CollectionBuilderAttribute))
             {

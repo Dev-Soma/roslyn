@@ -740,11 +740,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
                                 {
                                     diagnostics.Add(ErrorCode.ERR_BadUnsafeInUsingDirective, unsafeKeywordLocation);
                                 }
-                                else
-                                {
-                                    MessageID.IDS_FeatureUsingTypeAlias.CheckFeatureAvailability(diagnostics, usingDirective, unsafeKeywordLocation);
-                                    declaringSymbol.CheckUnsafeModifier(DeclarationModifiers.Unsafe, unsafeKeywordLocation, diagnostics);
-                                }
 
                                 flags |= BinderFlags.UnsafeRegion;
                             }

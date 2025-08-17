@@ -52,8 +52,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
             _explicitInterfaceType = explicitInterfaceType;
             _name = name;
 
-            this.CheckUnsafeModifier(declarationModifiers, diagnostics);
-
             if (isCompoundAssignmentOrIncrementAssignment)
             {
                 Debug.Assert(!this.IsStatic);

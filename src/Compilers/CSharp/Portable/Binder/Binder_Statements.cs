@@ -171,11 +171,7 @@ namespace Microsoft.CodeAnalysis.CSharp
         {
             var unsafeBinder = this.GetBinder(node);
 
-            if (!this.Compilation.Options.AllowUnsafe)
-            {
-                Error(diagnostics, ErrorCode.ERR_IllegalUnsafe, node.UnsafeKeyword);
-            }
-            else if (this.IsIndirectlyInIterator) // called *after* we know the binder map has been created.
+            if (this.IsIndirectlyInIterator) // called *after* we know the binder map has been created.
             {
                 CheckFeatureAvailability(node.UnsafeKeyword, MessageID.IDS_FeatureRefUnsafeInIteratorAsync, diagnostics);
             }

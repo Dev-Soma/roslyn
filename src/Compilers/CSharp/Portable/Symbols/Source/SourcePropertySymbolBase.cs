@@ -1553,7 +1553,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.SkipLocalsInitAttribute))
             {
-                CSharpAttributeData.DecodeSkipLocalsInitAttribute<PropertyWellKnownAttributeData>(DeclaringCompilation, ref arguments);
+                CSharpAttributeData.DecodeSkipLocalsInitAttribute<PropertyWellKnownAttributeData>(ref arguments);
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.DynamicAttribute))
             {

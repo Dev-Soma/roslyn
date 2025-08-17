@@ -363,7 +363,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.SkipLocalsInitAttribute))
             {
-                CSharpAttributeData.DecodeSkipLocalsInitAttribute<CommonEventWellKnownAttributeData>(DeclaringCompilation, ref arguments);
+                CSharpAttributeData.DecodeSkipLocalsInitAttribute<CommonEventWellKnownAttributeData>(ref arguments);
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.UnscopedRefAttribute))
             {
@@ -563,8 +563,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
                                                                         out hasExplicitAccessModifier);
 
             ModifierUtils.CheckFeatureAvailabilityForStaticAbstractMembersInInterfacesIfNeeded(mods, explicitInterfaceImplementation, location, diagnostics);
-
-            this.CheckUnsafeModifier(mods, diagnostics);
 
             ModifierUtils.ReportDefaultInterfaceImplementationModifiers(!isFieldLike, mods,
                                                                         defaultInterfaceImplementationModifiers,

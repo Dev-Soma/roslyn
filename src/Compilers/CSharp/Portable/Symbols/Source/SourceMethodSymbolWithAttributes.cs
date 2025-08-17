@@ -587,7 +587,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.SkipLocalsInitAttribute))
             {
-                CSharpAttributeData.DecodeSkipLocalsInitAttribute<MethodWellKnownAttributeData>(DeclaringCompilation, ref arguments);
+                CSharpAttributeData.DecodeSkipLocalsInitAttribute<MethodWellKnownAttributeData>(ref arguments);
             }
             else if (attribute.IsTargetAttribute(AttributeDescription.DoesNotReturnAttribute))
             {

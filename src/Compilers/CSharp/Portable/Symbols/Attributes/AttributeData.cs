@@ -236,15 +236,10 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
             }
         }
 
-        internal static void DecodeSkipLocalsInitAttribute<T>(CSharpCompilation compilation, ref DecodeWellKnownAttributeArguments<AttributeSyntax, CSharpAttributeData, AttributeLocation> arguments)
+        internal static void DecodeSkipLocalsInitAttribute<T>(ref DecodeWellKnownAttributeArguments<AttributeSyntax, CSharpAttributeData, AttributeLocation> arguments)
             where T : WellKnownAttributeData, ISkipLocalsInitAttributeTarget, new()
         {
             arguments.GetOrCreateData<T>().HasSkipLocalsInitAttribute = true;
-            if (!compilation.Options.AllowUnsafe)
-            {
-                Debug.Assert(arguments.AttributeSyntaxOpt is object);
-                ((BindingDiagnosticBag)arguments.Diagnostics).Add(ErrorCode.ERR_IllegalUnsafe, arguments.AttributeSyntaxOpt.Location);
-            }
         }
 
         internal static void DecodeMemberNotNullAttribute<T>(TypeSymbol type, ref DecodeWellKnownAttributeArguments<AttributeSyntax, CSharpAttributeData, AttributeLocation> arguments)

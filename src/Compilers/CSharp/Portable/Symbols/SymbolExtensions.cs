@@ -275,25 +275,6 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols
             return symbol.DeclaringCompilation.Options.AllowUnsafe;
         }
 
-        internal static void CheckUnsafeModifier(this Symbol symbol, DeclarationModifiers modifiers, BindingDiagnosticBag diagnostics)
-        {
-            symbol.CheckUnsafeModifier(modifiers, symbol.GetFirstLocation(), diagnostics);
-        }
-
-        internal static void CheckUnsafeModifier(this Symbol symbol, DeclarationModifiers modifiers, Location errorLocation, BindingDiagnosticBag diagnostics)
-            => CheckUnsafeModifier(symbol, modifiers, errorLocation, diagnostics.DiagnosticBag);
-
-        internal static void CheckUnsafeModifier(this Symbol symbol, DeclarationModifiers modifiers, Location errorLocation, DiagnosticBag? diagnostics)
-        {
-            if (diagnostics != null &&
-                (modifiers & DeclarationModifiers.Unsafe) == DeclarationModifiers.Unsafe &&
-                !symbol.CompilationAllowsUnsafe())
-            {
-                RoslynDebug.Assert(errorLocation != null);
-                diagnostics.Add(ErrorCode.ERR_IllegalUnsafe, errorLocation);
-            }
-        }
-
         /// <summary>
         /// Does the top level type containing this symbol have 'Microsoft.CodeAnalysis.Embedded' attribute?
         /// </summary>
